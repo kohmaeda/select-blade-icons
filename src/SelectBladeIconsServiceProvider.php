@@ -8,13 +8,9 @@ use Wirke\SelectBladeIcons\SelectBladeIcon;
 
 class SelectBladeIconsServiceProvider extends ServiceProvider
 {
-    public function register()
-    {
-        
-    }
 
     public function boot()
     {
-        Blade::component('SelectBladeIcon', SelectBladeIcon::class);
+        Blade::component('select-blade-icon', SelectBladeIcon::class);
     }
 }
