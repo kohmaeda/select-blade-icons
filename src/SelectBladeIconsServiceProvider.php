@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Blade;
 use Wirke\SelectBladeIcons\SelectBladeIcon;
 
-class SelectBladeIconsProviderServiceProvider extends ServiceProvider
+class SelectBladeIconsServiceProvider extends ServiceProvider
 {
     public function register()
     {
