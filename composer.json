@@ -32,7 +32,7 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Wirke\\SelectBladeIcons\\SelectBladeIconsProviderServiceProvider"
+                "Wirke\\SelectBladeIcons\\SelectBladeIconsServiceProvider"
             ]
         }
     },
