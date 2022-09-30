@@ -29,6 +29,13 @@
             "Wirke\\SelectBladeIcons\\": "src/"
         }
     },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Wirke\\SelectBladeIcons\\SelectBladeIconsProviderServiceProvider"
+            ]
+        }
+    },
     "config": {
         "sort-packages": true
     },
