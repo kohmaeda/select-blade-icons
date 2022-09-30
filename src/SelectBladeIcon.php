@@ -51,6 +51,6 @@ class SelectBladeIcon extends Component
      */
     public function render()
     {
-        return view('components.select-blade-icon');
+        return view('select-blade-icon');
     }
 }
