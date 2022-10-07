@@ -15,19 +15,32 @@ class IconSelector extends Partial
      */
     public function fields()
     {
+        $iconOptions = [];
+        $iconPackages = [
+            'heroicon','bi'
+        ];
+        foreach($iconPackages as $iconPackage){
+            switch($iconPackage){
+                case 'heroicon': 
+                    $iconPackageUrl = '/vendor/blade-ui-kit/blade-heroicons/resources/svg/*.svg';
+                    break;
+                case 'bi': 
+                    $iconPackageUrl = '/vendor/davidhsianturi/blade-bootstrap-icons/resources/svg/*.svg';
+                    break;
+            }
+            $filesPath = get_theme_file_path() . $iconPackageUrl;
+            foreach(glob($filesPath) as $file) {
+                $iconSlug = $iconPackage . '-' . str_replace('.svg','',basename($file));    
+                $iconOptions[$iconSlug] = $iconSlug;             
+            }
+        }
         $iconselect = new FieldsBuilder('iconselect');
 
         $iconselect
-        ->addRadio('selected_icon', [
+        ->addSelect('selected_icon', [
             'label' => "Select an Icon",
-            'choices' => [
-                'bi-facebook'			=> 'Facebook',
-                'bi-instagram'			=> 'Instagram',
-                'bi-twitter'			=> 'Twitter',
-                'bi-linkedin'			=> 'LinkedIn',
-                'bi-youtube'			=> 'YouTube',
-                'heroicon-s-status-online' => 'Status'
-            ],
+            'choices' => $iconOptions,
+            'ui' => 1,
             'default_value' => ''
                ]);
                 

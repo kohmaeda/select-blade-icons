@@ -4,7 +4,7 @@ namespace Wirke\SelectBladeIcons;
 
 use Illuminate\View\Component;
 
-class SelectBladeIcon extends Component
+class BladeIcons extends Component
 {
     public $iconName;
     /**
@@ -13,10 +13,16 @@ class SelectBladeIcon extends Component
      * @return void
      */
     public function __construct($iconName = null)
-    {
+    {   
+        if(str_contains($iconName,'-')){
+            list($iconPackage,$name) = explode('-',$iconName,2);
+        } else {
+            $iconPackage = 'heroicon';
+            $name = 's-question-mark-circle';
+        }
         $fallback = 'heroicon-s-question-mark-circle';
-        list($iconPackage,$name) = explode('-',$iconName,2);
         $icon[$iconPackage] = $name;
+
 
         switch($iconPackage){
             case 'heroicon': 
@@ -32,16 +38,15 @@ class SelectBladeIcon extends Component
         });
 
         if($iconName){
-            $this->iconName = $iconName;
+            $this->iconName = $iconPackage . '-' . $icon[$iconPackage];
             if($avialableIcons->contains($icon[$iconPackage])){
-                $this->iconName = $iconName;
+                $this->iconName = $iconPackage . '-' . $icon[$iconPackage];
             } else {
                 $this->iconName = $fallback;
             }
         } else {
             $this->iconName = $fallback;
         }
-        
     }
 
     /**
@@ -51,6 +56,6 @@ class SelectBladeIcon extends Component
      */
     public function render()
     {
-        return view('select-blade-icon');
+        return view('select-blade-icons::blade-icons');
     }
 }
