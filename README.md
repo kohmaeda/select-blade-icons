@@ -14,10 +14,10 @@ This is a shell around [BladeIcons](https://github.com/blade-ui-kit/blade-icons)
 ## Usage
 
 1. Use the Selector by using "Wirke\SelectBladeIcons\IconSelector" where you declare your Fields and add the selector with
-    ```sh
+    ```php
     ->addFields($this->get(IconSelector::class))
     ```
 2. In the coresponding blade file you then add our bladeicon component
-    ```sh
+    ```php
     <x-blade-icons :iconName="$icon" class="w-6 h-6 text-gray-200 "/>
     ```
